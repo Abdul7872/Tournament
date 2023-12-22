@@ -19,7 +19,7 @@ function GameCard ({ game, teams}: GameDataType) {
     }
   },[])
 
-  const updateData = (playerName: string, playerAge: number, teamName: string, idx?: number) => {
+  const updateData = (playerName: string, playerAge: string, teamName: string, idx?: number) => {
     const data = gameDetails.map(({team_name, players})=>{
       if(team_name === teamName) {
         return {
@@ -34,7 +34,6 @@ function GameCard ({ game, teams}: GameDataType) {
 
     localStorage.setItem(game, JSON.stringify(data));
     
-    console.log(playerName, playerAge, data)
   }
 
   return (
@@ -47,7 +46,7 @@ function GameCard ({ game, teams}: GameDataType) {
         <div key={team_name} className="p-3">
           <h3 className="text-lg font-medium text-gray-700">{team_name} ({players?.length})</h3>
           <div className="p-2 overflow-y-scroll h-60">
-            <PlayerForm {...{team_name, updateData}} />
+            <PlayerForm name="" age="" {...{team_name, updateData}} />
             {players?.map(({name, age}, idx)=><PlayerForm key={`${idx}-${name}`} {...{idx, name, age, team_name, updateData}} />)}
           </div>
         </div>

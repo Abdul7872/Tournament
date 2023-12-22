@@ -4,7 +4,7 @@ export interface GameDataType {
   game: string,
   teams: Array<{
     team_name: string,
-    players: Array<{ name: string, age: number }>
+    players: Array<{ name: string, age: string }>
   }>,
 }
 
